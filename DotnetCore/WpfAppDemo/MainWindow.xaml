@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppDemo"
-        xmlns:nlogViewer="clr-namespace:NlogViewer;assembly=NetStandard.NLogViewer"
+        xmlns:nlog ="clr-namespace:NlogViewer;assembly=NetStandard.NlogViewer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="5" ButtonBase.Click="ButtonBase_OnClick">
@@ -16,14 +16,7 @@
             <Button x:Name="btnTest">Test</Button>
         </StackPanel>
         <GroupBox Grid.Row="1" Header="NlogViewer">
-            <nlogViewer:NlogViewer
-                x:Name="logCtrl"
-                AutoScrollToLast="True"
-                ExceptionWidth="auto"
-                LevelWidth="auto"
-                LoggerNameWidth="0"
-                MessageWidth="auto"
-                TimeWidth="AUTO" />
+            <nlog:NlogViewer x:Name="logCtrl" />
         </GroupBox>
     </Grid>
 </Window>

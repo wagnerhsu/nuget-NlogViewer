@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.Logging;
 using NLog;
+using ILogger = NLog.ILogger;
 
 namespace WpfAppDemo
 {
@@ -21,9 +23,10 @@ namespace WpfAppDemo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ILogger Logger = LogManager.CreateNullLogger();
-        public MainWindow()
+        private ILogger<MainWindow> Logger;
+        public MainWindow(ILogger<MainWindow> logger)
         {
+            Logger = logger;
             InitializeComponent();
         }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -33,7 +36,7 @@ namespace WpfAppDemo
 
             if (button.Name == nameof(btnTest))
             {
-                Logger.Info("Information");
+                Logger.LogInformation("Information");
                 try
                 {
                     int i = 0;
@@ -41,7 +44,7 @@ namespace WpfAppDemo
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "Error Information");
+                    Logger.LogError(ex, "Error Information");
                 }
             }
         }

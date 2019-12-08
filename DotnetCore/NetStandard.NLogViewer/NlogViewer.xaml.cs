@@ -87,7 +87,7 @@ namespace NlogViewer
         {
             IsTargetConfigured = false;
             LogEntries = new ObservableCollection<LogEventViewModel>();
-
+            LogManager.LoadConfiguration(Path.Combine(Directory.GetCurrentDirectory(), "nlog.config"));
             InitializeComponent();
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
